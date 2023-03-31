@@ -14,11 +14,29 @@ pipeline
              java dev'''
       }
     }
-    stage('email')
-    {
-      steps{
-        emailext body: 'hello', subject: 'jenkins build notification', to: 'rupali.gupta@knoldus.com'
-      }
-    }
+    post{
+        
+        
+          
+        always{
+        
+        
+          
+            mail to: "rupali.gupta@knoldus.com",
+        
+        
+          
+            subject: "Build result",
+        
+        
+          
+            body: "success"
+        
+        
+          
+        }
+        
+        
+              }
   }
 }
