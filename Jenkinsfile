@@ -13,7 +13,7 @@ pipeline
         sh '''javac dev.java
              java dev'''
       }
-    }
+    }}
     post{
         
         
@@ -38,5 +38,5 @@ pipeline
         
         
               }
-  }
+  
 }
