@@ -5,7 +5,7 @@ pipeline
     stage('clone')
     {
       steps{
-      git branch: 'prod', url: 'https://github.com/Rupali1520/jenkinsassignmentrepo.git'
+      git branch: 'production', url: 'https://github.com/Rupali1520/jenkinsassignmentrepo.git'
       }}
     stage('build')
     {
