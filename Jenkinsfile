@@ -25,7 +25,7 @@ pipeline
                 sh 'sudo /opt/tomcat/bin/startup.sh'
             }
         }
-    stage('Deploy') {
+    stage('Deploy1') {
             environment {
                 SSH_PRIVATE_KEY = credentials('2efcdd8f-1e19-488b-90ef-7ad8482783f1')
             }
