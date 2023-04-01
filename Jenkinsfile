@@ -31,9 +31,7 @@ pipeline
             }
             steps {
                 sshagent(['2efcdd8f-1e19-488b-90ef-7ad8482783f1']) {
-                    sh 'sudo cp /var/lib/jenkins/workspace/try_development/target/java-hello-world.war /opt/tomcat/webapps/'
-                sh 'sudo /opt/tomcat/bin/shutdown.sh'
-                sh 'sudo /opt/tomcat/bin/startup.sh'
+                    sh 'sudo scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/try_development/target/java-hello-world.war knoldus@192.168.1.122:/opt/tomcat/webapps'
                 }
             }
         }
