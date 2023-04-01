@@ -21,9 +21,9 @@ pipeline
                 TOMCAT_HOME = '/opt/tomcat'
             }
             steps {
-                sh 'cp target/java-hello-world.war $TOMCAT_HOME/webapps/'
-                sh '$TOMCAT_HOME/bin/shutdown.sh'
-                sh '$TOMCAT_HOME/bin/startup.sh'
+                sh 'sudo cp target/java-hello-world.war $TOMCAT_HOME/webapps/'
+                sh 'sudo $TOMCAT_HOME/bin/shutdown.sh'
+                sh 'sudo $TOMCAT_HOME/bin/startup.sh'
             }
         }
   }
