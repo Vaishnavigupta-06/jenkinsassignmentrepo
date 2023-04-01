@@ -16,14 +16,16 @@ pipeline
         sh 'mvn clean install'
       }
     }
-    stage('deploy'){
-      steps{
-        
-        #sshagent(['hello']) {
-    sh 'scp -o StrictHostKeyChecking=no /target/java-hello-world.war knoldus@127.0.0.1:/opt/tomcat/webapps'
-#}
-      }
-    }
+     stage('Deploy') {
+            environment {
+                TOMCAT_HOME = '/opt/tomcat'
+            }
+            steps {
+                sh 'cp target/java-hello-world.war $TOMCAT_HOME/webapps/'
+                sh '$TOMCAT_HOME/bin/shutdown.sh'
+                sh '$TOMCAT_HOME/bin/startup.sh'
+            }
+        }
   }
     
   
