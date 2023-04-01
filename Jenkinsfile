@@ -16,30 +16,16 @@ pipeline
         sh 'mvn clean install'
       }
     }
+    stage('deploy'){
+      steps{
+        sshagent(['knoldus']) {
+          sh 'scp -o StrictHostKeyChecking=no noldus@127.0.0.1:/opt/tomcat/webapps'
+    
+         
+}
+      }
+    }
   }
-    post{
-        
-        
-          
-        always{
-        
-        
-          
-            mail to: "rupali.gupta@knoldus.com",
-        
-        
-          
-            subject: "Build result",
-        
-        
-          
-            body: "success"
-        
-        
-          
-        }
-        
-        
-              }
+    
   
 }
