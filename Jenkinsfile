@@ -3,6 +3,10 @@ pipeline
   agent any
   environment{
     PATH ="/opt/apache-maven-3.6.3/bin:$PATH"
+    TOMCAT_URL = 'localhost:8080'
+    CONTEXT_PATH = '/'
+    CREDENTIALS_ID = 'admin'
+    WAR_PATTERN = '**/*.war'
   }
   stages{
     stage('clone')
@@ -20,10 +24,15 @@ pipeline
                TOMCAT_HOME = '/opt/tomcat'
             }
             steps {
-                sh 'sudo cp /var/lib/jenkins/workspace/try_development/target/java-hello-world.war /opt/tomcat/webapps/'
-                sh 'sudo /opt/tomcat/bin/shutdown.sh'
-                sh 'sudo /opt/tomcat/bin/startup.sh'
-            }
+        script {
+          def warFile = findFiles(glob: env.WAR_PATTERN)[0]
+          def tomcat = Tomcat.httpRequest(env.TOMCAT_URL)
+          tomcat.auth.basic('admin', credentials('admin'))
+          tomcat.multipartUpload {
+            file(warFile)
+            field 'path', env.CONTEXT_PATH
+          }
+        }
         }
    
     
