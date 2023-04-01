@@ -25,7 +25,7 @@ pipeline
                 sh 'sudo /opt/tomcat/bin/startup.sh'
             }
         }
-    stage('Deploy'){
+    stage('Deploy1'){
       steps 
       
       {
