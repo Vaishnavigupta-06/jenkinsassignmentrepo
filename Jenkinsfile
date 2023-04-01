@@ -3,7 +3,7 @@ pipeline
   agent any
   environment{
     PATH ="/opt/apache-maven-3.6.3/bin:$PATH"
-    TOMCAT_URL = 'localhost:8080'
+   
     CONTEXT_PATH = '/'
     CREDENTIALS_ID = 'admin'
     WAR_PATTERN = '**/*.war'
@@ -24,12 +24,13 @@ pipeline
                TOMCAT_HOME = '/opt/tomcat'
             }
             steps {
-              sh 'sudo /opt/tomcat/bin/shutdown.sh'
-                sh 'sudo cp /var/lib/jenkins/workspace/try_development/target/java-hello-world.war /opt/tomcat/webapps/'
-                
-                sh 'sudo /opt/tomcat/bin/startup.sh' }
+              
+              
+              
+              
+             }
         }
-     
+    
   }
     
   
