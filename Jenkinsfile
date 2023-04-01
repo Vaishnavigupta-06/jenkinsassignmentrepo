@@ -26,12 +26,7 @@ pipeline
             }
         }
    
-    stage('Deploy2') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'tomcat-credentials-id', usernameVariable: 'admin', passwordVariable: 'password')]) {
-                    sh "curl -u ${TOMCAT_USER}:${TOMCAT_PASSWORD} --upload-file target/yourproject.war http://localhost:8080/manager/text/deploy?path=/yourproject&update=true"
-                }
-            }
+    
   }
     
   
