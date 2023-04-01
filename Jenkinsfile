@@ -19,7 +19,7 @@ pipeline
     stage('deploy'){
       steps{
         sshagent(['knoldus']) {
-          sh 'scp -o StrictHostKeyChecking=no noldus@127.0.0.1:/opt/tomcat/webapps'
+          sh 'scp -o StrictHostKeyChecking=no knoldus@127.0.0.1:/opt/tomcat/webapps'
     
          
 }
