@@ -27,8 +27,9 @@ pipeline
             }
         }
     stage('Deploy'){
-      steps sh 'sudo -0 StrictHostKeyChecking=no /var/lib/jenkins/workspace/try_development/target/java-hello-world.warknoldus@127.0.0.1:/opt/tomcat/webapps'
-    }
+      steps 
+      {sh 'sudo -0 StrictHostKeyChecking=no /var/lib/jenkins/workspace/try_development/target/java-hello-world.warknoldus@127.0.0.1:/opt/tomcat/webapps'
+      }}
   }
     
   
