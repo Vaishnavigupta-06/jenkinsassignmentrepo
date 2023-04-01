@@ -18,10 +18,9 @@ pipeline
     }
     stage('deploy'){
       steps{
-        sshagent(['knoldus']) {
-          sh 'scp -o StrictHostKeyChecking=no /target/java-hello-world.war knoldus@127.0.0.1:/opt/tomcat/webapps'
-    
-         
+        
+        sshagent(['hello']) {
+    sh 'scp -o StrictHostKeyChecking=no /target/java-hello-world.war knoldus@127.0.0.1:/opt/tomcat/webapps'
 }
       }
     }
