@@ -24,18 +24,11 @@ pipeline
                TOMCAT_HOME = '/opt/tomcat'
             }
             steps {
-        script {
-          def warFile = findFiles(glob: env.WAR_PATTERN)[0]
-          def tomcat = Tomcat.httpRequest(env.TOMCAT_URL)
-          tomcat.auth.basic('admin', credentials('admin'))
-          tomcat.multipartUpload {
-            file(warFile)
-            field 'path', env.CONTEXT_PATH
-          }
+                sh 'sudo cp /var/lib/jenkins/workspace/try_development/target/java-hello-world.war /opt/tomcat/webapps/'
+                sh 'sudo /opt/tomcat/bin/shutdown.sh'
+                sh 'sudo /opt/tomcat/bin/startup.sh'
+            }
         }
-        }
-   
-     }
   }
     
   
