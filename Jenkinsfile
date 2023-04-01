@@ -24,10 +24,11 @@ pipeline
                TOMCAT_HOME = '/opt/tomcat'
             }
             steps {
-              sh 'sudo /opt/tomcat/bin/shutdown.sh'
-                sh 'sudo cp /var/lib/jenkins/workspace/try_development/target/java-hello-world.war /opt/tomcat/webapps/'
-                
-                sh 'sudo /opt/tomcat/bin/startup.sh' }
+              sshagent(['deploy']){
+            sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/assgn_development/src/main/webapp/target/webapp.war ubuntu@13.55.100.146 /opt/tomcat/webapps'
+              }
+              
+              }
         }
      
   }
