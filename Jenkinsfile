@@ -24,7 +24,7 @@ pipeline
                TOMCAT_HOME = '/opt/tomcat'
             }
             steps {
-               deploy adapters: [tomcat9(credentialsId: 'tomcat_credential', path: '', url: 'localhost:8080')], contextPath: '/pipeline', onFailure: false, war: 'try_devloyement/target/*.war' 
+               deploy adapters: [tomcat9(credentialsId: 'admi', path: '', url: 'localhost:8080')], contextPath: '/', onFailure: false, war: 'try_devloyement/target/*.war' 
             }
         }
      
