@@ -1,19 +1,21 @@
 pipeline
 {
   agent any
+  tools {
+    maven 'maven-3.9.1' 
+  }
   stages{
     stage('clone')
     {
       steps{
       git branch: 'development', url: 'https://github.com/Rupali1520/jenkinsassignmentrepo.git'
       }}
-    stage('build')
-    {
-      steps{
-        sh '''javac dev.java
-             java dev'''
+    stage ('Build') {
+      steps {
+        sh 'mvn clean install'
       }
-    }}
+    }
+  }
     post{
         
         
